@@ -1,0 +1,119 @@
+<h1>Top Destination</h1>
+<div class="top-des">
+    <div class="top-des__item top-des__item-{{i}}" *ngFor="let item of topDes; let i = index; trackBy : trackById" >
+        <div class="top-des__item__img" style="background-image: url('{{ item.img }}');">
+            <span class="top-des__item__name">
+                <p>{{ item.name }}</p>
+            </span>
+            <span class="top-des__item__des">
+                <p>As soon as the scale of the tragedy became clear, congregants rushed to Sacred Heart Catholic Church. They’ve kept coming in search of comfort and community.</p>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div #provinceList>
+    <p *ngFor="let item of province; trackBy : trackById">
+        {{ item.name }}
+    </p>
+</div>
+
+<div style="height: 50px;"></div>
+
+<div class="btn btn--success" (click)="reloadProvince()">
+    Reload
+</div>
+
+<div style="height: 100px;"></div>
+
+<input type="text" name="" id="" #name value="CCD" class="test">
+
+<div style="height: 100px;"></div>
+
+<!-- Reactive forms -->
+
+<div class="info" [formGroup]="infoForm">
+    <div class="row info-1" formGroupName="personal">
+        <div class="col-md-5 info-1__item">
+            <label for="firstName">First name</label>
+            <span style="color: red; padding: 5px;" 
+                *ngIf="(infoForm.get('personal.firstName')?.errors?.required 
+                    || infoForm.get('personal.firstName')?.errors?.['minlength']) 
+                    && infoForm.get('personal.firstName')?.touched">
+                Required
+            </span>
+            <input type="text" name="" id="firstName" placeholder="Cao" formControlName="firstName" >
+        </div>
+        <div class="col-md-5 info-1__item">
+            <label for="lastName">Last name</label>
+            <input type="text" name="" id="lastName" placeholder="Cong Danh" formControlName="lastName">
+        </div>
+        <div class="col-md-2 info-1__item">
+            <label for="suffix">Suffix</label>
+            <select name="suffix" id="suffix">
+                <option value="">Mr</option>
+                <option value="">Ms</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row info-1" formGroupName="contact">
+        <div class="col-md-5 info-1__item">
+            <label for="phoneNumber">Phone no.</label>
+            <span style="color: red"
+                *ngIf="infoForm.get('contact.phone')?.errors?.['min']">
+                Min 25
+            </span>
+            <input type="number" name="" id="phoneNumber" placeholder="0357777777" formControlName="phone">
+        </div>
+
+        <!-- infoForm.get('contact.email')?.hasError('required', 'email') -->
+        <div class="col-md-7 info-1__item">
+            <label for="email">Email</label>
+            <span style="color: red"
+                *ngIf="!infoForm.get('contact.email')?.valid && infoForm.get('contact.email')?.touched">
+                Error
+            </span>
+            <input type="text" name="" id="email" placeholder="congdanh.2516.jk@gmail.com" formControlName="email">
+        </div>
+    </div>
+</div>
+
+<div style="height: 50px;"></div>
+
+<button type="submit" class="btn btn--success" (click)="submit()" [disabled]="!infoForm.valid">
+   Submit
+</button>
+
+<div style="height: 100px;"></div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="position: relative;">
+        <form #signUpForm="ngForm" (ngSubmit)="signUp()" >
+            <label for="username">User name</label>
+            <input type="text" [(ngModel)]="account.username" name="username" id="username" required minlength="3" #username="ngModel">
+            <div *ngIf="username.invalid && username.dirty" class="alert">Error</div>
+
+            <label for="password">Password</label>
+            <input type="password" [(ngModel)]="account.password"  name="password" id="password" autocomplete="cc-name"  required>
+
+            <button type="submit" class="btn btn--success" style="margin-top: 80px; width: 100%;">Sign in</button>
+        </form>
+
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+<div style="height: 100px;"></div>
+
+<pre>{{ signUpForm.value | json}}</pre>
+<pre>{{ signUpForm.valid | json}}</pre>
+<pre>{{ username.dirty | json}}</pre>
+
+
+<div style="height: 100px;"></div>
+
+<pre>{{ infoForm.get('personal.firstName')?.touched | json}}</pre>
+<pre>{{infoForm.get('contact.email')?.hasError('required', 'email') | json}}</pre>

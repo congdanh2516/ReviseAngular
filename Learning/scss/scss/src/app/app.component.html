@@ -1,0 +1,16 @@
+<a routerLink="/home" routerLinkActive="selected"
+    [routerLinkActiveOptions]="{exact: true}">Home</a>
+<a routerLink="/siblingcomunication" routerLinkActive="selected">Sibling Comunication</a>
+<a routerLink="/product-list" routerLinkActive="selected">Product list</a>
+<a routerLink="/product" routerLinkActive="selected">Product</a>
+
+<div style="height: 50px;"></div>
+
+<div>
+    <span (click)='login()'>Log in</span>
+    <span (click)='logout()' style="margin-left: 20px;">Log out</span>
+</div>
+
+<div style="height: 50px;"></div>
+
+<router-outlet></router-outlet>

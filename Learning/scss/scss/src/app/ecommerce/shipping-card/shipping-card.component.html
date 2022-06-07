@@ -1,0 +1,26 @@
+<ng-container *ngIf = "cart.length > 0; else none">
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tr *ngFor = "let item of cart; index as i">
+            <td>{{ i+1 }}</td>
+            <td>{{ item.productName }}</td>
+            <td>{{ item.productDes }}</td>
+            <td>{{ item.productPrice }}</td>
+            <td>{{ item.quantity }}</td>
+        </tr>
+    </table>
+</ng-container>
+
+<ng-template #none>
+    <p style="text-align: center;">Nothing is added</p>
+</ng-template>
+
+<a routerLink="/product-list">Back to list</a>

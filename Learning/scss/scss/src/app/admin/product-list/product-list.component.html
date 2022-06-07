@@ -1,0 +1,16 @@
+<h1>Product</h1>
+<div class="row">
+    <div class="col-md-3 product__item" *ngFor="let item of product">
+        <div class="product__item__img">
+            <img src="../../../assets/images/sonych510.png" alt="">
+        </div>
+        <div class="product__item__des">
+            <p>{{ item.getProductName() }}</p>
+            <p>{{ item.getProductDes() }}</p>
+            <p>{{ item.getProductPrice() }}</p>
+            <!-- <a [routerLink]="['/product2']" [queryParams]="{id : 1, name : 'SP08'}">Detail</a> -->
+            <a [routerLink]="['/product', item.getProductId()]">Detail</a>
+            <p style="color: blue; cursor: pointer;">Add to card</p>
+        </div>
+    </div>
+</div>

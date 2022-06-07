@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+    
+$yellow: #E8A207;
+$blue: #0C172E;
+
+@mixin des-box ($width, $height : 450px) {
+    width: $width;
+    height: $height;
+}
+
+@function pow($base, $exponent) {
+    $result : 1;
+    @for $_ from 1 through $exponent {
+        $result : $result * $_ ;
+    }
+    @return $result;
+}
