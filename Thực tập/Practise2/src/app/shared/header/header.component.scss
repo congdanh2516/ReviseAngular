@@ -1,0 +1,61 @@
+@import '../../../styles.scss';
+header {
+    // display : flex;
+    // justify-content: space-between;
+    // align-items: center;
+    height: 100px;
+    line-height: 100px;
+    padding: 0;
+    // border: 1px solid red;
+    
+    // box-shadow: ;
+
+    .logo {
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .log-out-btn {
+        
+        cursor: pointer;
+        @include button(90px, 50px);
+        margin: 0;
+        margin-right: 15px;
+        background-color: transparent;
+        color: black; 
+        transition: all .3s ease;
+
+        &:hover {
+            box-shadow: 0 0 5px 1px gray;
+        }
+
+    }
+
+    .signin {
+        font-size: 20px;
+        // border: 1px solid red;
+        border-radius: 5px;
+        height: 50px;
+        line-height: 30px;
+        padding: 10px;
+        transition: all 0.3s ease;
+        font-size: 22px;
+        cursor: pointer;
+
+        &:hover{
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.555);;
+        }
+    }
+}
+
+.modal-content {
+    background: white;
+    border: none;
+    padding: 15px;
+}
+
+.modal-dialog {
+    width: 420px;
+    margin: auto !important;
+}

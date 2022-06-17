@@ -1,0 +1,70 @@
+.home {
+    height: 700px;
+    width: 100%;
+    display: flex;
+    float: left;
+    // border: 1px solid red;
+
+    .color {
+        // position: absolute;
+        // display: inline-block;
+        height: 100%;
+        width: 55%;
+        // border: 2px solid green;
+        z-index: 10;
+        background-color: black;
+        position: relative;
+        
+    
+        .des {
+            position: absolute;
+            color: white;
+            bottom: 20%;
+            left: 10%;
+            font-size: 50px;
+
+            span {
+                font-size: 24px;
+                opacity: 0.5;
+            }
+        }
+           
+
+        p {
+            color: white;
+            position: absolute;
+            color: white;
+            bottom: 12%;
+            left: 10%;
+            padding: 5px;
+            font-size: 20px;
+            // opacity: 0.5;
+        }
+    }
+
+    .img {
+        // display: inline-block;
+        position: relative;
+        height: 100%;
+        width: 15%;
+        // border: 2px solid yellow;
+        background-size: cover;
+        box-shadow: 2px 0px 5px 1px black;
+        
+    }
+
+    .img1 {
+        background-image: url('../../../assets/images/sufface.jpg');
+        z-index: 3;
+    }
+
+    .img2 {
+        background-image: url('../../../assets/images/sufface1.jpg');
+        z-index: 2;
+    }
+
+    .img3 {
+        background-image: url('../../../assets/images/macbook2.jpg');
+        z-index: 1;
+    }
+}

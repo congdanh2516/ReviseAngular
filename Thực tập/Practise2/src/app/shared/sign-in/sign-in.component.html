@@ -1,0 +1,37 @@
+<form class="sign-in" [formGroup]="signInForm" (ngSubmit)="signIn()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sign-in__title">
+                Sign in to CODA
+                <p>All fields are required</p>
+            </div>
+            <div class="sign-in__container">
+                <input 
+                    type="text" name="" id="username" placeholder="Email" 
+                    formControlName="userName">
+                <span 
+                    [ngStyle] = "{'visibility' : signInForm.get('userName')?.errors?.['required'] 
+                    && signInForm.get('userName')?.touched ? 'visible' : 'hidden'}">
+                    User name is empty
+                </span>
+                <!-- *ngIf="signInForm.get('userName')?.errors?.['required'] 
+                        && signInForm.get('userName')?.touched" -->
+                <input 
+                    type="password" name="" id="password" autocomplete="cc-name" placeholder="Password"
+                    formControlName="password">
+                <span 
+                    [ngStyle] = "{'visibility' : signInForm.get('password')?.errors?.['required'] 
+                    && signInForm.get('password')?.touched ? 'visible' : 'hidden'}">
+                    Password is empty
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12" style="display: flex; justify-content: center;">
+            <!-- <div (click)="signIn()" class="sign-in-btn">Sign in</div> -->
+            <button class="sign-in-btn" type="submit">Sign in</button>
+        </div>
+    </div>
+</form>

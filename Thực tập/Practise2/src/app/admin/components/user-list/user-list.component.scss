@@ -1,0 +1,301 @@
+@import "../../../../styles.scss";
+
+.content {
+    display: flex;
+    float: left;
+    width: 100%;
+
+    .modifySection {
+        width: 40%;
+        display: none;
+    }
+}
+.user-list {
+    padding: 30px;
+    padding-bottom: 0;
+    width: 100%;
+    transition: width .4s ease;
+    font-size: 22px;
+}
+
+.user-list2 {
+    width: 60%;
+    font-size: 15px;
+    transition: width .4s ease;
+
+    .status {
+        padding: 2px 5px;
+        font-size: 10px;
+    }
+}
+
+.row1 {
+    font-weight: bold;
+    padding: 0 10px;
+
+    .search {
+        input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+            width: 305px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .add-new-btn {
+        @include button(120px, 50px);
+        margin-top: 0;
+        margin-right: 0;
+        background-color: transparent;
+        border: 1px solid black;
+        line-height: 48px;
+        color: black;
+    }
+}
+
+.row2 {
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 0 10px;
+
+    select {
+        width: 190px;
+        margin-left: 10px;
+        height: 50px;
+        border-radius: 5px;
+        border: 1px solid gray;
+        padding: 0 10px;
+        appearance: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    &__quantity {
+
+        sup {
+            font : {
+                weight: normal;
+                size: 18px
+            }
+        }
+    }
+
+    &__delete {
+        .delete-btn {
+            @include button(120px, 50px);
+            margin-top: 0;
+            margin-right: 0;
+        }
+    }
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    // margin: auto;
+    transition: all 0.5s ease;
+    // font-size: 22px;
+
+    border-collapse:separate;
+    border-spacing: 0 20px;
+
+    .action {
+        padding-right: 20px !important;
+        text-align: right;
+        width: 15%;
+
+        &__edit {
+            display: inline-block;
+            margin-left: 15px;
+            // display: none;
+        }
+    }
+
+    thead {
+        font-weight: bold;
+        tr {  
+
+            td {
+                height: 70px;
+                padding : 10px;
+            }
+
+            .no {
+                width: 2%;
+            }
+
+            .name {
+                width: 20%;
+            }
+
+            .email {
+                width: 30%
+            }
+
+            .phone {
+                width: 15%;
+            }
+
+            .dob {
+                width: 18%;
+            }
+
+        }
+
+        .delete-btn {
+            color: $red;
+            cursor: pointer;
+        }
+    }
+
+    tbody {
+        tr {
+            background-color: white;        
+            td {
+                height: 100px;
+                padding : 5px 10px;
+
+                i {
+                    cursor: pointer;
+                }
+
+                input[type=checkbox] {
+                    margin-left: 15px;
+                    width: 20px;
+                    height: 20px;
+                    outline: 1px solid black;
+
+                    accent-color: #961E1E;
+                }
+
+                .status {
+                    font-size: 12px;
+                    padding: 2px 10px;
+                    color: white;
+                    border-radius: 5px;
+                    margin-left: 10px;
+
+                    &--actived {
+                        background-color: rgb(18, 112, 18);
+                    }
+
+                    &--deactived {
+                        background-color: #961E1E;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// sort
+.sort {
+    display: inline-block;
+    cursor: pointer;
+    
+    &:hover{
+        animation: rotation .8s linear;
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: none;
+    color: black;
+    font-weight: bold;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover {
+    background: none;
+    text-decoration: underline;
+}
+
+::ng-deep .ngx-pagination {
+    height: 60px;
+    line-height: 0px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    opacity: 1 !important;
+    top: 10px;
+    transition: top .4s ease;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #38B140;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #38B140;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

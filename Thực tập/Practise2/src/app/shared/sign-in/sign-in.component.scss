@@ -1,0 +1,52 @@
+@import '../../../styles.scss';
+
+.sign-in {
+    
+    padding: 30px 0px;
+
+    &__title {
+        padding-left: 20px;
+        font : {
+            size: 28px;
+            // weight: bold;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    }
+
+    &__container {
+        span {
+            color: $red; 
+            padding: 20px;
+        }
+    }
+
+    input {
+        display: block;
+        height: 40px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        width: 350px;
+        border: none;
+        border-bottom: 1px solid black;
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            padding-left: 10px;
+        }
+    }
+}
+
+
+.sign-in-btn {
+    @include button(350px, 50px);
+    line-height: 48px;
+    margin-top: 20px;
+}
+
+

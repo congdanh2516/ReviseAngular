@@ -1,0 +1,132 @@
+<form class="add-new" [formGroup]="userForm" (ngSubmit)="purpose ? createNewUser() : modifyUser()">
+    <div class="add-new__title">
+        <p>{{ purpose? 'Create new user' : 'Modify'}}</p>
+    </div>
+    <div class="add-new__content">
+        <div class="row" formGroupName="personal">
+            <div class="col-md-6">
+                <label for="firstName">First name</label> <span class="add-new__content__required">*</span> 
+                <span class="add-new__content__error" 
+                    *ngIf="(userForm.get('personal.firstName')?.errors?.['required'] 
+                        || userForm.get('personal.firstName')?.errors?.['minlength']) 
+                        && userForm.get('personal.firstName')?.touched">
+                    Required
+                </span>
+                <input type="text" name="" id="firstName" formControlName="firstName">
+            </div>
+            <div class="col-md-6">
+                <label for="lastName">Last name</label> <span class="add-new__content__required">*</span> 
+                <span class="add-new__content__error" 
+                    *ngIf="(userForm.get('personal.lastName')?.errors?.['required'] 
+                        || userForm.get('personal.lastName')?.errors?.['minlength']) 
+                        && userForm.get('personal.lastName')?.touched">
+                    Required
+                </span>
+                <input type="text" name="" id="lastName" formControlName="lastName">
+            </div>
+        </div>
+        <div class="row" formGroupName="personal">
+            <label for="dob">Date of Birth</label>
+            <div class="col-md-3">
+                <select name="" id="dob" formControlName="month">
+                    <option value="" selected="selected"></option>
+                    <option *ngFor = "let item of monthList" value={{item.value}}>{{ item.view }}</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="" id="" formControlName="date" placeholder="Date">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="" id="" formControlName="year" placeholder="Year">
+            </div>
+        </div>
+        <div class="row" formGroupName="contact">
+            <div class="col-md-6">
+                <label for="email">Email</label> <span class="add-new__content__required">*</span> 
+                <span class="add-new__content__error" 
+                    *ngIf="(userForm.get('contact.email')?.errors?.['required'] 
+                        || userForm.get('contact.email')?.errors?.['minlength']) 
+                        && userForm.get('contact.email')?.touched">
+                    Required
+                </span>
+                <input type="text" name="" id="email" formControlName="email">
+            </div>
+            <div class="col-md-6">
+                <label for="phone">Phone</label> <span class="add-new__content__required">*</span> 
+                <span class="add-new__content__error" 
+                    *ngIf="(userForm.get('contact.phone')?.errors?.['required'] 
+                        || userForm.get('contact.phone')?.errors?.['minlength']) 
+                        && userForm.get('contact.phone')?.touched">
+                    Required
+                </span>
+                <input type="text" name="" id="phone" formControlName="phone">
+            </div>
+        </div>
+        <div class="row" formGroupName="other">
+            <div class="col-md-2">
+                <label for="status">Status</label> <span class="add-new__content__required">*</span> 
+            </div>
+            <div class="col-md-2">
+                <label class="switch">
+                    <input type="checkbox" formControlName="status">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="col-md-1">
+                <span *ngIf = "userForm.get('other.status')?.dirty || !purpose" class="statementStatus" [ngClass]="userForm.get('other.status')?.value ? 'statementStatus--success' : 'statementStatus--danger'">
+                    {{ userForm.get('other.status')?.value ? 'Actived' : 'Suspended'}}
+                </span>
+            </div>
+        </div>
+        <div class="row" formGroupName="other">
+            <div class="col-md-2 add-new__content__social__title">
+                <label for="">Social link</label>
+            </div>
+            <div class="col-md-4 add-new__content__social__icon">
+                <div (click)="chooseTypeSocail('facebook')" #facebook
+                    class="add-new__content__social__icon--active facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div (click)="chooseTypeSocail('linkedin')" #linkedin
+                    class="linkedin">
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+                <div (click)="chooseTypeSocail('twitter')" #twitter
+                    class="twitter">
+                    <i class="fa-brands fa-twitter-square"></i>
+                </div>
+            </div>
+            <div class="col-md-5 add-new__content__social__type">
+                <input type="text" name="" id="" formControlName="social" (keyup)="offError()">
+            </div>
+            <div class="col-md-1 add-new__content__social__btn">
+                <span (click)="addSocial()">Add</span>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0;">
+            <div class="col-md-6"></div>
+            <div class="col-md-5">
+                <span class="add-new__content__error" 
+                    [ngStyle]="{'visibility' : !checkReg ? 'visible' : 'hidden'}">
+                    Incorrect
+                </span>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <div class="add-new__button">
+        <div class="row" *ngIf = "purpose" style="margin-top: 0;">
+            <div class="col-md-10 add-new__content__required">
+                * Field is required
+            </div>
+            <div class="col-md-2" style="display: flex; align-items: center; justify-content: right; padding-right: 10px; cursor: pointer;" (click)="userForm.reset()">
+                <span class="add-new__button__reset-label">Reset</span>&nbsp;<i class="fa-solid fa-arrow-rotate-left add-new__button__reset-icon"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" [disabled]="!userForm.valid">{{ purpose ? 'Create' : 'Modify'}}</button>
+            </div>
+        </div>
+    </div>
+</form>

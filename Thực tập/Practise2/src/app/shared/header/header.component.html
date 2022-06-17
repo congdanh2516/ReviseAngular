@@ -1,0 +1,30 @@
+<header>
+  <div class="row">
+    <div class="col-md-1">
+      <div class="logo" (click)="backHome()">
+        CODA
+      </div>
+    </div>
+    <div class="col-md-7">
+
+    </div>
+    <div class="col-md-4" style="display: flex; align-items: center; justify-content: right;">
+      <span (click)="logOut()" class="log-out-btn" *ngIf="signIn_sv.loggedIn()">Log out</span><span *ngIf="signIn_sv.loggedIn()"> | &nbsp;</span>
+      <div class="signin" data-bs-toggle="modal" data-bs-target="#signIn" (click)="signIn_sv.loggedIn() ? toAdmin() : ''">
+        {{ signIn_sv.loggedIn() ? 'Cao Cong Danh' : 'Sign in' }} &nbsp; <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </div>
+  </div>
+    
+</header>
+<!-- {{ !signIn_sv.loggedIn() ? 'exampleModalCenter' : ''}} -->
+<div class="modal fade" id="{{ !signIn_sv.loggedIn() ? 'signIn' : ''}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+    style="background-color: transparent !important;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <app-sign-in></app-sign-in>
+        </div>
+      </div>
+    </div>
+  </div>
